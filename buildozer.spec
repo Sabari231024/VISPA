@@ -1,22 +1,22 @@
 [app]
 
 # (str) Title of your application
-title = SampleApp
+title = vispa
 
 # (str) Package name
-package.name = sampleapk
+package.name = myvispa
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.novfensec
+package.domain = org.kivy_example
 
 # (str) Source code where the main.py live
 source.dir = .
 
 # (list) Source files to include (let empty to include all the files)
-source.include_exts = py,png,jpg,kv,txt,atlas
+source.include_exts = py,png,jpg,kv,atlas
 
 # (list) List of inclusions using pattern matching
-source.include_patterns = images/*.png
+#source.include_patterns = assets/*,images/*.png
 
 # (list) Source files to exclude (let empty to not exclude anything)
 #source.exclude_exts = spec
@@ -37,7 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.1.0,kivymd==0.104.2,pillow==8.3.1,requests,gtts,easyocr,playsound,os,googletrans,opencv==4.5.2
+requirements = python3,kivy==2.0.0rc4,kivy_garden.graph,numpy,pillow,requests,gtts,easyocr,playsound,os,googletrans,opencv==4.5.2
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -60,13 +60,13 @@ orientation = portrait
 #
 
 #
-# author = © Copyright Novfensec Inc.
+# author = © Copyright Info
 
 # change the major version of python used by the app
 osx.python_version = 3
 
 # Kivy version to use
-osx.kivy_version = 2.1.0
+osx.kivy_version = 2.0.0
 
 #
 # Android specific
@@ -80,7 +80,7 @@ fullscreen = 0
 # red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray,
 # darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy,
 # olive, purple, silver, teal.
-android.presplash_color = black
+#android.presplash_color = #FFFFFF
 
 # (string) Presplash animation using Lottie format.
 # see https://lottiefiles.com/ for examples and https://airbnb.design/lottie/
@@ -99,7 +99,7 @@ android.permissions = INTERNET,CAMERA
 #android.features = android.hardware.usb.host
 
 # (int) Target Android API, should be as high as possible.
-#android.api = 27
+android.api = 30
 
 # (int) Minimum API your APK / AAB will support.
 #android.minapi = 21
@@ -108,7 +108,7 @@ android.permissions = INTERNET,CAMERA
 #android.sdk = 20
 
 # (str) Android NDK version to use
-#android.ndk = 23b
+#android.ndk = 19b
 
 # (int) Android NDK API to use. This is the minimum API your app will support, it should usually match android.minapi.
 #android.ndk_api = 21
@@ -283,11 +283,8 @@ android.allow_backup = True
 # (bool) disables the compilation of py to pyc/pyo files when packaging
 # android.no-compile-pyo = True
 
-# (str) The format used to package the app for release mode (aab or apk or aar).
-# android.release_artifact = aab
-
-# (str) The format used to package the app for debug mode (apk or aar).
-# android.debug_artifact = apk
+# (str) The format used to package the app for release mode (aab or apk).
+android.release_artifact = aab
 
 #
 # Python for android (p4a) specific
@@ -301,6 +298,7 @@ android.allow_backup = True
 
 # (str) python-for-android branch to use, defaults to master
 #p4a.branch = master
+p4a.branch = develop
 
 # (str) python-for-android specific commit to use, defaults to HEAD, must be within p4a.branch
 #p4a.commit = HEAD
