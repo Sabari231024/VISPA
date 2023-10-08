@@ -7,7 +7,7 @@ title = vispa
 package.name = myvispa
 
 # (str) Package domain (needed for android/ios packaging)
-package.domain = org.kivy_example
+package.domain = org.vipsasnu
 
 # (str) Source code where the main.py live
 source.dir = .
@@ -37,7 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.0.0rc4,kivy_garden.graph,numpy,pillow,requests,gtts,easyocr,playsound,os,googletrans,opencv==4.5.2
+requirements = python3,kivy==2.0.0rc4,kivy_garden.graph,numpy,pillow,requests,gtts,gradio_client,playsound,os,googletrans,opencv==4.5.2
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
