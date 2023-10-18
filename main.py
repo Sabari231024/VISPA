@@ -6,7 +6,11 @@ from kivy.uix.label import Label
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.camera import Camera
 from gradio_client import Client
+from plyer import permission
 
+# Request camera permission
+permission.request_permission('camera')
+import os
 client = Client("https://sabari231024-vipsa.hf.space/--replicas/9z975/")
 
 class ObjectRecognitionScreen(Screen):
@@ -24,7 +28,9 @@ class ObjectRecognitionScreen(Screen):
 
     def on_press_btn(self, instance):
         # Capture image
-        image_path = 'captured_image.jpg'
+        app_dir = self.user_data_dir
+        # Store and access files in the app directory
+        image_path = os.path.join(app_dir, 'captured_image.jpg')
         self.camera.export_to_png(image_path)
         # Call the app function
         result = client.predict(image_path, "1", "ta", api_name="/predict")
@@ -48,7 +54,10 @@ class OCRDetectionScreen(Screen):
 
     def on_press_btn(self, instance):
         # Capture image
-        image_path = 'captured_image.jpg'
+        app_dir = self.user_data_dir
+
+        # Store and access files in the app directory
+        image_path = os.path.join(app_dir, 'captured_image.jpg')
         self.camera.export_to_png(image_path)
         # Call the app function
         result = client.predict(image_path, "2", "ta", api_name="/predict")
