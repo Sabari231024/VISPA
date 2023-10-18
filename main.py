@@ -1,16 +1,17 @@
 from kivy.app import App
 from kivy.uix.button import Button
-from kivy.core.audio import SoundLoader
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.label import Label
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.camera import Camera
-from gradio_client import Client
 from plyer import permission
+from gradio_client import Client
+from kivy.core.audio import SoundLoader
+import os
 
 # Request camera permission
 permission.request_permission('camera')
-import os
+
 client = Client("https://sabari231024-vipsa.hf.space/--replicas/9z975/")
 
 class ObjectRecognitionScreen(Screen):
@@ -28,7 +29,8 @@ class ObjectRecognitionScreen(Screen):
 
     def on_press_btn(self, instance):
         # Capture image
-        app_dir = self.user_data_dir
+        app_dir = App.get_running_app().user_data_dir
+
         # Store and access files in the app directory
         image_path = os.path.join(app_dir, 'captured_image.jpg')
         self.camera.export_to_png(image_path)
@@ -37,7 +39,15 @@ class ObjectRecognitionScreen(Screen):
         # Show the result on the screen
         self.result_label.text = "Object_recognition"
         # Play audio
-        AudioPlayerApp.play_audio(result)  # Play the audio after capturing the image and getting the result
+        self.play_audio(result)  # Play the audio after capturing the image and getting the result
+
+    @staticmethod
+    def play_audio(audio_path):
+        sound = SoundLoader.load(audio_path)
+        if sound:
+            sound.play()
+        else:
+            print("Error: Could not load audio file.")
 
 class OCRDetectionScreen(Screen):
     def __init__(self, **kwargs):
@@ -54,7 +64,7 @@ class OCRDetectionScreen(Screen):
 
     def on_press_btn(self, instance):
         # Capture image
-        app_dir = self.user_data_dir
+        app_dir = App.get_running_app().user_data_dir
 
         # Store and access files in the app directory
         image_path = os.path.join(app_dir, 'captured_image.jpg')
@@ -64,20 +74,7 @@ class OCRDetectionScreen(Screen):
         # Show the result on the screen
         self.result_label.text = "OCR_detection"
         # Play audio
-        AudioPlayerApp.play_audio(result)  # Play the audio after capturing the image and getting the result
-
-class AudioPlayerApp(App):
-    @staticmethod
-    def play_audio(audio_path):
-        sound = SoundLoader.load(audio_path)
-        if sound:
-            sound.play()
-        else:
-            print("Error: Could not load audio file.")
-
-    def build(self):
-        play_button = Button(text='Play Audio', on_press=lambda instance: self.play_audio("path_to_your_audio_file.mp3"))
-        return play_button
+        self.play_audio(result)  # Play the audio after capturing the image and getting the result
 
 class MyApp(App):
     def build(self):
