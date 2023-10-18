@@ -94,14 +94,8 @@ fullscreen = 0
 #icon.adaptive_background.filename = %(source.dir)s/data/icon_bg.png
 
 # (list) Permissions
-request_permissions([
-    Permission.INTERNET,
-    Permission.CAMERA,
-    Permission.WRITE_EXTERNAL_STORAGE,
-    Permission.READ_EXTERNAL_STORAGE
-])
 # (See https://python-for-android.readthedocs.io/en/latest/buildoptions/#build-options-1 for all the supported syntaxes and properties)
-from android.permissions import request_permissions, Permission
+android.permissions = INTERNET,CAMERA
 
 # (list) features (adds uses-feature -tags to manifest)
 #android.features = android.hardware.usb.host
