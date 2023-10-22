@@ -37,7 +37,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy,kivymd,gradio_client,pillow
+requirements = python3==3.10.10,hostpython3==3.10.10,kivy,typing-extensions,kivymd,httpcore,h11,gradio_client,pyyaml,packaging,sniffio,filelock,pillow,pyjnius,httpx,huggingface_hub,tqdm,websockets,fsspec
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
