@@ -25,12 +25,13 @@ client = Client("https://sabari231024-vipsa.hf.space/--replicas/z9gkk/")
 class CameraClick(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.camera = Camera()  # Create a camera widget
+        self.add_widget(self.camera)  # Add the camera widget to the layout
 
     def capture(self):
-        camera = self.ids['camera']
         timestr = time.strftime("%Y%m%d_%H%M%S")
         image_path = "IMG_{}.png".format(timestr)
-        camera.export_to_png(image_path)
+        self.camera.export_to_png(image_path)  # Use self.camera instead of self.ids['camera']
         print("Captured:", image_path)
         return image_path
 
