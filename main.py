@@ -8,14 +8,7 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.camera import Camera
 from gradio_client import Client
 
-# Request necessary permissions for Android
-if platform == 'android':
-    request_permissions([
-        Permission.CAMERA,
-        Permission.WRITE_EXTERNAL_STORAGE,
-        Permission.READ_EXTERNAL_STORAGE,
-        Permission.INTERNET
-    ])
+request_permissions([Permission.CAMERA,Permission.WRITE_EXTERNAL_STORAGE,Permission.READ_EXTERNAL_STORAGE,Permission.INTERNET])
 client = Client("https://sabari231024-vipsa.hf.space/--replicas/z9gkk/")
 
 class ObjectRecognitionScreen(Screen):
