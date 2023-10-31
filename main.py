@@ -8,7 +8,7 @@ from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.camera import Camera
 from gradio_client import Client
 
-client = Client("https://sabari231024-vipsa.hf.space/--replicas/tkwsv/")
+client = Client("https://sabari231024-vipsa.hf.space/--replicas/ddk75/")
 
 class ObjectRecognitionScreen(Screen):
     def __init__(self, **kwargs):
