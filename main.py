@@ -2,14 +2,13 @@ from kivy.app import App
 from kivy.uix.button import Button
 from kivy.core.audio import SoundLoader
 from kivy.uix.screenmanager import ScreenManager, Screen
-from android.permissions import request_permissions, Permission
+
 from kivy.uix.label import Label
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.camera import Camera
 from gradio_client import Client
 
-request_permissions([Permission.CAMERA,Permission.WRITE_EXTERNAL_STORAGE,Permission.READ_EXTERNAL_STORAGE,Permission.INTERNET])
-client = Client("https://sabari231024-vipsa.hf.space/--replicas/z9gkk/")
+client = Client("https://sabari231024-vipsa.hf.space/--replicas/tkwsv/")
 
 class ObjectRecognitionScreen(Screen):
     def __init__(self, **kwargs):
@@ -42,12 +41,13 @@ class ObjectRecognitionScreen(Screen):
         self.camera.export_to_png(image_path)
         # Call the app function based on mode
         if self.mode == 1:
-            result = client.predict(image_path, "1", "ta", api_name="/predict")
+            result = client.predict(image_path, "1", "en", api_name="/predict")
             self.result_label.text = "Object_recognition"
         else:
-            result = client.predict(image_path, "2", "ta", api_name="/predict")
+            result = client.predict(image_path, "2", "en", api_name="/predict")
             self.result_label.text = "OCR_detection"
         # Play audio
+        print(result)
         AudioPlayerApp.play_audio(result)  # Play the audio after capturing the image and getting the result
 
 class AudioPlayerApp(App):
