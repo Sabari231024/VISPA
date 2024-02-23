@@ -30,3 +30,6 @@ Google Translator
 GTTS
 Hugging Face Spaces
 Kivy
+**API RELATED SPACE:**
+the model is deployed in hugging face in an space whose api is been used inorder improve the portability of the app.
+link for the space: https://huggingface.co/spaces/Sabari231024/VIPSA
